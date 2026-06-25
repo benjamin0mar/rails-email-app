@@ -1,28 +1,133 @@
-== README
+# Rails Email App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails application that demonstrates scalable email delivery using background job processing with Sidekiq and Redis.
 
-Things you may want to cover:
+The project was built to explore asynchronous email workflows, user authentication, and third-party email service integration through SendGrid.
 
-* Ruby version
+## Features
 
-* System dependencies
+* User authentication with Devise
+* Email composition and delivery
+* Background job processing with Sidekiq
+* Redis-based queue management
+* Asynchronous email sending
+* SendGrid integration
+* Responsive interface using Materialize CSS
 
-* Configuration
+## Architecture
 
-* Database creation
+The application follows a typical Rails MVC architecture while delegating email processing to background workers.
 
-* Database initialization
+```text
+User
+  ↓
+Rails Application
+  ↓
+Sidekiq Job Queue
+  ↓
+Redis
+  ↓
+SendGrid
+  ↓
+Recipient
+```
 
-* How to run the test suite
+This approach prevents users from waiting for email delivery operations to complete and improves application responsiveness.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Tech Stack
 
-* Deployment instructions
+### Backend
 
-* ...
+* Ruby on Rails 4.2
+* Sidekiq
+* Redis
+* Devise
+* SendGrid
 
+### Frontend
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Materialize CSS
+* jQuery
+* Turbolinks
+
+### Database
+
+* SQLite (development)
+
+## Key Technical Challenges
+
+### Asynchronous Email Processing
+
+Instead of sending emails directly from the web request, email jobs are pushed to Redis and processed by Sidekiq workers in the background.
+
+Benefits:
+
+* Faster response times
+* Better user experience
+* Improved scalability
+* Retry mechanisms for failed deliveries
+
+### Authentication
+
+User registration and authentication are implemented using Devise, providing a secure and maintainable authentication layer.
+
+## Getting Started
+
+### Requirements
+
+* Ruby
+* Rails 4.2
+* Redis
+* Bundler
+
+### Installation
+
+```bash
+git clone https://github.com/benjamin0mar/Email-App.git
+cd Email-App
+
+bundle install
+```
+
+Start Redis:
+
+```bash
+redis-server
+```
+
+Run Sidekiq:
+
+```bash
+bundle exec sidekiq
+```
+
+Start Rails:
+
+```bash
+rails server
+```
+
+## Future Improvements
+
+* Email templates
+* Email analytics dashboard
+* Delivery tracking
+* Scheduled email campaigns
+* Docker support
+* API-first architecture
+
+## Learning Outcomes
+
+This project demonstrates practical experience with:
+
+* Background job processing
+* Queue-based architectures
+* Third-party API integration
+* Authentication systems
+* Rails application development
+
+## Author
+
+Omar Benjamin
+
+Software Developer specializing in Laravel, React, Ruby on Rails, Mobile Development, and Digital Product Development.
