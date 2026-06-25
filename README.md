@@ -83,7 +83,7 @@ User registration and authentication are implemented using Devise, providing a s
 ### Installation
 
 ```bash
-git clone https://github.com/benjamin0mar/Email-App.git
+git clone https://github.com/benjamin0mar/rails-email-app.git
 cd Email-App
 
 bundle install
