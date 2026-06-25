@@ -125,9 +125,3 @@ This project demonstrates practical experience with:
 * Third-party API integration
 * Authentication systems
 * Rails application development
-
-## Author
-
-Omar Benjamin
-
-Software Developer specializing in Laravel, React, Ruby on Rails, Mobile Development, and Digital Product Development.
